@@ -1,95 +1,105 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client';
 
-export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+import { useMemo, useState } from 'react';
+import { IBook, IConfig } from 'types';
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
-}
+import config from '../config/config.example.json';
+import styles from '../css/home.module.css';
+
+export const Home = () => {
+	const featured = useMemo(() => (config as IConfig).books.filter(book => book.featured) || [], []);
+	const [search, setSearch] = useState<string>('');
+
+	const bookSearch = (book: IBook) => {
+		if (!search) return 'no-search';
+
+		if (book.title.toLowerCase().includes(search.toLowerCase())) return 'title';
+		if (book.author?.toLowerCase().includes(search.toLowerCase())) return 'author';
+		if (book.year?.toString().includes(search.toLowerCase())) return 'year';
+		if (book.summary?.toLowerCase().includes(search.toLowerCase())) return 'summary';
+		if (book.genre?.includes(search.toLowerCase())) return 'genre';
+		if (book.tags?.includes(search.toLowerCase())) return 'tag';
+
+		return false;
+	};
+
+	return (
+		<div className={styles.page}>
+			<header className={styles.header}>
+				<h1 className={styles.title}>Open Library</h1>
+				<input
+					type="search"
+					placeholder="Search"
+					value={search}
+					onChange={ev => setSearch(ev.target.value)}
+					className={styles.search}
+				/>
+			</header>
+
+			<main className={styles.bookshelf}>
+				{!search && (
+					<section className={styles.section}>
+						<h2 className={styles.sectionLabel}>Recently Read Books</h2>
+						<ul className={styles.bookGroup}>
+							{([] as IBook[]).map(book => (
+								<li
+									key={book.title}
+									data-cover={book.cover}
+									className={styles.book}
+									style={{ backgroundImage: `images/${book.cover}` }}
+								>
+									<div className={styles.bookTitle}>{book.title}</div>
+								</li>
+							))}
+						</ul>
+					</section>
+				)}
+
+				{featured.length && !search && (
+					<section className={styles.section}>
+						<h2 className={styles.sectionLabel}>Featured Books</h2>
+						<ul className={styles.bookGroup}>
+							{featured.map(book => (
+								<li
+									key={book.title}
+									data-cover={book.cover}
+									className={styles.book}
+									style={{ backgroundImage: `url('images/${book.cover}')` }}
+								>
+									<div className={styles.bookTitle}>{book.title}</div>
+								</li>
+							))}
+						</ul>
+					</section>
+				)}
+
+				<section className={styles.section}>
+					<h2 className={styles.sectionLabel}>All Books</h2>
+					<ul className={styles.bookGroup}>
+						{(config as IConfig).books.filter(bookSearch).map(book => (
+							<li
+								key={book.title}
+								data-cover={book.cover}
+								className={styles.book}
+								style={{ backgroundImage: `images/${book.cover}` }}
+							>
+								<div className={styles.bookTitle}>{book.title}</div>
+							</li>
+						))}
+					</ul>
+				</section>
+			</main>
+
+			<footer className={styles.footer}>
+				<blockquote>
+					<i>
+						“A reader lives a thousand lives before he dies . . . The man who never reads lives only one.” - George R.R.
+						Martin
+					</i>
+				</blockquote>
+			</footer>
+		</div>
+	);
+};
+
+export default Home;

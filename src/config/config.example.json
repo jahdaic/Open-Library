@@ -1,0 +1,64 @@
+{
+	"books": [
+		{
+			"title": "Dracula",
+			"author": "Bram Stoker",
+			"year": 1987,
+			"summary": "Dracula by Bram Stoker follows the sinister Count Dracula as he travels from Transylvania to England in search of new blood. The story unfolds through a series of journal entries, letters, and newspaper articles, primarily from characters like Jonathan Harker, Mina Murray, and Dr. John Seward. As Dracula preys on Mina, her fiancé Harker and a group of friends—including the renowned vampire hunter Van Helsing—band together to confront and stop the ancient evil. The novel explores themes of fear, desire, and the clash between modernity and the supernatural, leaving a lasting impact on the horror genre.",
+			"genre": ["Horror", "Fiction"],
+			"cover": "dracula/cover.jpg",
+			"tags": ["horror", "gothic", "fiction", "vampires", "dracula", "supernatural"],
+			"featured": true
+		},
+		{
+			"title": "Frankenstein",
+			"author": "Mary Shelley",
+			"year": 1818,
+			"summary": "Frankenstein by Mary Shelley tells the story of Victor Frankenstein, a young scientist who becomes obsessed with creating life. After successfully animating a creature made from assembled body parts, Victor is horrified by his own creation and abandons it. The creature, rejected by society and its creator, grapples with loneliness and seeks revenge on Victor for his misery. As their fates intertwine, the novel explores profound themes of ambition, isolation, and the consequences of playing God, ultimately posing questions about humanity and morality.",
+			"genre": ["Science Fiction", "Horror", "Fiction"],
+			"cover": "frankenstein/cover.jpg",
+			"tags": ["sci-fi", "scifi", "science fiction", "horror", "gothic", "fiction", "frankenstein"],
+			"featured": true
+		},
+		{
+			"title": "The Picture of Dorian Gray",
+			"author": "Oscar Wilde",
+			"year": 1890,
+			"summary": "The Picture of Dorian Gray by Oscar Wilde tells the story of a young man, Dorian Gray, who becomes enamored with his own portrait painted by artist Basil Hallward. Influenced by the hedonistic philosophies of Lord Henry Wotton, Dorian wishes that he could remain forever young while the portrait ages instead. As Dorian indulges in a life of excess and moral degradation, the portrait becomes a grotesque reflection of his corrupted soul, bearing the scars of his actions. The novel explores themes of beauty, vanity, and the duality of human nature, ultimately leading to Dorian's tragic downfall.",
+			"genre": ["Fiction"],
+			"cover": "dorian-gray/cover.jpg",
+			"tags": ["supernatural", "victorian"],
+			"featured": true
+		},
+		{
+			"title": "The Works of Edgar Allen Poe: Volume II",
+			"author": "Edgar Allan Poe",
+			"year": 1903,
+			"summary": "The Works of Edgar Allan Poe: Volume II features a collection of Poe's tales, poetry, and essays that showcase his mastery of macabre and gothic themes. This volume includes renowned works such as The Tell-Tale Heart, The Fall of the House of Usher, and The Cask of Amontillado, each delving into the complexities of the human psyche, guilt, and the supernatural. Poe's distinctive style, characterized by vivid imagery and psychological depth, invites readers to explore the darker aspects of existence, leaving a profound impact on the horror and mystery genres. This collection exemplifies Poe's enduring legacy as a pioneer of American literature.",
+			"genre": ["Horror", "Fantasy"],
+			"cover": "poe/cover.jpg",
+			"tags": ["horror", "gothic", "fiction"],
+			"featured": true
+		},
+		{
+			"title": "Alice's Adventures in Wonderland",
+			"author": "Lewis Carroll",
+			"year": 1865,
+			"summary": "Alice's Adventures in Wonderland by Lewis Carroll follows a young girl named Alice who falls down a rabbit hole into a whimsical, nonsensical world. As she navigates Wonderland, she encounters strange creatures like the Cheshire Cat, the Mad Hatter, and the Queen of Hearts. Throughout her journey, Alice experiences puzzling changes in size and engages in bizarre conversations, ultimately questioning reality and logic. The story blends fantasy and satire, exploring themes of curiosity, identity, and the absurd.",
+			"genre": ["Fantasy", "Fiction", "Children"],
+			"cover": "alice/cover.jpg",
+			"tags": ["fantasy", "fiction", "imagination", "wonderland"],
+			"featured": false
+		},
+		{
+			"title": "The Great Gatsby",
+			"author": "F. Scott Fitzgerald",
+			"year": 1925,
+			"summary": "The Great Gatsby by F. Scott Fitzgerald is a novel set in the Jazz Age of the 1920s, exploring themes of wealth, love, and the American Dream. It follows the story of Nick Carraway, who moves to Long Island and becomes entangled in the life of his mysterious, wealthy neighbor, Jay Gatsby. Gatsby is deeply in love with Nick's cousin, Daisy Buchanan, and throws lavish parties in hopes of winning her back. As the novel unfolds, the glittering facade of Gatsby's world begins to crack, revealing a tragic story of ambition, unrequited love, and disillusionment with the American Dream.",
+			"genre": ["Fiction"],
+			"cover": "great-gatsby/cover.jpg",
+			"tags": ["fiction", "jazz", "america"],
+			"featured": false
+		}
+	]
+}
